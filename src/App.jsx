@@ -21,10 +21,27 @@ function Logo() {
 }
 
 function Form() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
-    <div className="add-form">
-      <h3>What do you need for your trip?</h3>
-    </div>
+    <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your 🤩 trip?</h3>
+
+      <select>
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+
+      <input type="text" placeholder="Item..." />
+
+      <button>Add</button>
+    </form>
   );
 }
 
@@ -41,7 +58,14 @@ function PackingList() {
 }
 
 function Item({ item }) {
-  return <li>{item.description}</li>;
+  return (
+    <li>
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button>❌</button>
+    </li>
+  );
 }
 
 function Stats() {

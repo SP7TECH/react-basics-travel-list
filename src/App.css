@@ -82,6 +82,10 @@ input {
   align-items: center;
 }
 
+.list ul::-webkit-scrollbar {
+  display: none;
+}
+
 .actions button,
 .list select {
   text-transform: uppercase;
